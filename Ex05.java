@@ -6,36 +6,40 @@ public class Ex05 {
     public static void main(String[] args) {
         int qtdCristais = SC.nextInt();
         int qtdConsultas = SC.nextInt();
-        while (qtdCristais == 0 && qtdConsultas == 0) {
+        int cont = 0;
+        while (qtdCristais != 0 && qtdConsultas != 0) {
+            cont++;
             int identificadores[] = new int[qtdCristais];
             for (int i = 0; i < identificadores.length; i++) {
                 identificadores[i] = SC.nextInt();
             }
+            System.out.println("CASE#" + cont + ":");
             for (int i = 0; i < qtdConsultas; i++) {
                 int numConsultado = SC.nextInt();
+                insertionSort(identificadores);
                 int indiceNum = buscaBin(identificadores, 0, identificadores.length/2, identificadores.length, numConsultado);
                 if (indiceNum != -1) {
                     System.out.println(numConsultado + " found at " + indiceNum);
                 } else {
-                    System.out.println();
+                    System.out.println(numConsultado + " not found");
                 }
             }
         }
     }
 
     public static int buscaBin(int[] vet, int ini, int meio, int fim, int numBuscado) {
-        if (ini == fim) {
+        if (ini == meio) {
             if (numBuscado == vet[ini]) {
                 return ini+1;
             }
             return -1;
         }
-        if (numBuscado == vet[ini]) {
-            return ini+1;            
-        } else if (numBuscado > vet[meio]) {
-            return buscaBin(vet, ini, meio/2, meio, numBuscado);
+        if (numBuscado == vet[meio]) {
+            return meio+1;            
+        } else if (numBuscado < vet[meio]) {
+            return buscaBin(vet, ini, (meio+ini)/2, meio, numBuscado);
         } else {
-            return buscaBin(vet, meio, fim/2, fim, numBuscado);
+            return buscaBin(vet, meio, (fim+meio)/2, fim, numBuscado);
         }
     }
 
