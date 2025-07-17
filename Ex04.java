@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Ex04 {
     final static Scanner SC = new Scanner(System.in);
+
     public static void main(String[] args) {
         while (SC.hasNext()) {
             int pontuacaoCandidato[] = new int[SC.nextInt()];
@@ -26,8 +27,8 @@ public class Ex04 {
     public static void insertionSort(int[] vet) {
         for (int i = 1; i < vet.length; i++) {
             for (int j = i; j >= 1; j--) {
-                if (vet[j]>vet[j-1]) {
-                    swap(vet, j, j-1);
+                if (vet[j] > vet[j - 1]) {
+                    swap(vet, j, j - 1);
                 } else {
                     break;
                 }
